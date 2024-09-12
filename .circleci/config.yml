@@ -12,9 +12,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - aws-ecr/build-and-push-image:
-          account-url: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+          account-url: AWS_ACCOUNT_URL
           repo: ${ECR_REPOSITORY_NAME}
-          region: ${AWS_REGION}
+          region: AWS_REGION
           tag: ${CIRCLE_BUILD_NUM}
 
   update-deployment:
@@ -25,13 +25,13 @@ jobs:
       - run:
           name: Update deployment file
           command: |
-            sed -i 's|image: .*|image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:${CIRCLE_BUILD_NUM}|' deployment.yaml
+            sed -i 's|image: .*|image: ${AWS_ACCOUNT_URL}/${ECR_REPOSITORY_NAME}:${CIRCLE_BUILD_NUM}|' manifists/deployment.yaml
       - run:
           name: Commit and push changes
           command: |
-            git config user.email "circleci@example.com"
-            git config user.name "CircleCI"
-            git add deployment.yaml
+            git config user.email "ziyadtr101@gmail.com"
+            git config user.name "ZeyadTareq224"
+            git add manifists/deployment.yaml
             git commit -m "Update image tag to ${CIRCLE_BUILD_NUM}"
             git push origin ${CIRCLE_BRANCH}
 
