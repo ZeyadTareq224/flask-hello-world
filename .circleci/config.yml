@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Update deployment file
           command: |
-            sed -i 's|image: .*|image: ${AWS_ACCOUNT_URL}/${ECR_REPOSITORY_NAME}:${CIRCLE_BUILD_NUM}|' manifists/deployment.yaml
+            sed -i 's|image: .*|image: $AWS_ACCOUNT_URL/$ECR_REPOSITORY_NAME:$CIRCLE_BUILD_NUM|' manifists/deployment.yaml
       - run:
           name: Commit and push changes
           command: |
