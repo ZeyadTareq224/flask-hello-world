@@ -13,9 +13,9 @@ jobs:
       - setup_remote_docker
       - aws-cli/setup
       - aws-ecr/build-and-push-image:
-          account-url: ${AWS_ACCOUNT_URL}
+          account-url: AWS_ACCOUNT_URL
           repo: ${ECR_REPOSITORY_NAME}
-          region: ${AWS_REGION}
+          region: AWS_REGION
           tag: ${CIRCLE_BUILD_NUM}
 
   update-deployment:
