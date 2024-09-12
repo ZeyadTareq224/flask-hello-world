@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: ${AWS_ACCOUNT_URL}/${ECR_REPOSITORY_NAME}:${CIRCLE_BUILD_NUM}
+        image: 084828580171.dkr.ecr.us-east-1.amazonaws.com/flask-app:8
         ports:
         - containerPort: 5000
       imagePullSecrets:
